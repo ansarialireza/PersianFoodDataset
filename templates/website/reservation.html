@@ -12,14 +12,13 @@
                     <h4 class="form-title">Upload FORM</h4>
                     <p>PLEASE FILL OUT ALL REQUIRED FIELDS. THANKS </p>
 
-                    <form id="contact-form" method="post" class="reservations-box" name="contactform" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'dataset:upload_image' %}">
                         {% csrf_token %}
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-box">
-                                <input type="text" name="form_name" id="form_name" placeholder="Your Name" required="required" data-error="Firstname is required.">
+                                <input type="text" name="name" id="form_name" placeholder="Your Name" required="required" data-error="Firstname is required.">
                             </div>
-                        </div>
-                        
+                        </div>                      
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-box">
                                 <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
@@ -36,7 +35,7 @@
                     
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-box">
-                                <select name="food_category" id="food_category" class="selectpicker" placeholder="Your Name">
+                                <select name="category" id="food_category" class="selectpicker" placeholder="Your Name">
                                     {% for category in categories %}
                                         <option value="{{ category.id }}">{{ category.name }}</option>
                                     {% endfor %}
