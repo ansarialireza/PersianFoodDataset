@@ -41,7 +41,7 @@ class UploadImageView(FormView):
         return redirect('website:index')
 
 class SuccessView(TemplateView):
-    template_name = 'website/index.html'  # تغییر template_name به مقدار مناسب برای SuccessView
+    template_name = 'website/index.html'  # Change template_name to the appropriate value for SuccessView
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

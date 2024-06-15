@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'website',
     'accounts',
     'dataset',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,9 @@ if config("USE_SSL_SETTINGS",default=False,cast=bool):
     CSRF_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_SAMESITE = 'Strict'
+    
+    
+    
+RECAPTCHA_PUBLIC_KEY = '6Lc4tfkpAAAAAJVAkobV3VXKlFblAn4jEYZVHKgf'
+RECAPTCHA_PRIVATE_KEY = '6Lc4tfkpAAAAAPBHpA9vBHCcVlOxtgCmX14K0vj8'
+RECAPTCHA_REQUIRED_SCORE = 0.85
