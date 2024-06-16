@@ -1,7 +1,7 @@
 
 from pathlib import Path
 from decouple import config
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +14,10 @@ SECRET_KEY = 'django-insecure-sutsg(e3xrin8bjz7par8)(zsmqs+x$ts^0f0t$u_5mm5eoz0%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# TEMPLATE_DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','*']
 
 
 # Application definition
@@ -48,7 +51,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/"templates"],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -60,6 +63,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
@@ -159,7 +163,7 @@ if config("USE_SSL_SETTINGS",default=False,cast=bool):
     SESSION_COOKIE_SAMESITE = 'Strict'
     
     
-    
-RECAPTCHA_PUBLIC_KEY = '6Lc4tfkpAAAAAJVAkobV3VXKlFblAn4jEYZVHKgf'
-RECAPTCHA_PRIVATE_KEY = '6Lc4tfkpAAAAAPBHpA9vBHCcVlOxtgCmX14K0vj8'
-RECAPTCHA_REQUIRED_SCORE = 0.85
+RECAPTCHA_PUBLIC_KEY = '6LchX_opAAAAANTgsamqA5K1Ig7IcmIG8lTytHYh'
+RECAPTCHA_PRIVATE_KEY = '6LchX_opAAAAAATSr5-VRLsn76h4k4EiArbgaYrN'
+# RECAPTCHA_REQUIRED_SCORE = 0.85
+SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']

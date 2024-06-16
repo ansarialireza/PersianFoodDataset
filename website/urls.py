@@ -6,6 +6,6 @@ from . import views
 app_name = 'website'
 
 urlpatterns=[
-    path('',Index.as_view(),name='index'),
+    path('',UploadImageView.as_view(),name='index'),
     
 ]

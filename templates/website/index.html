@@ -4,32 +4,115 @@
 {% block content %}
     
 
-    {% include 'Website/banner.html' %}
+<div id="banner" class="banner full-screen-mode parallax">
+    <div class="container pr">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="banner-static">
+                <div class="banner-text">
+                    <div class="banner-cell">
+                        <!-- <h1>Dinner with us  <span class="typer" id="some-id" data-delay="200" data-delim=":" data-words="ME:Family:Officemates" data-colors="red"></span><span class="cursor" data-cursorDisplay="_" data-owner="some-id"></span></h1> -->
+                        <h2>Collecting pictures of Iranian food</h2>
+                        <p>Please press the button below to upload the image</p>
+                        <div class="book-btn">
+                            <a href="#reservation" class="table-btn hvr-underline-from-center">Upload image</a>
+                        </div>
+                        <!-- <a href="#about">
+                            <div class="mouse"></div>
+                        </a> -->
+                    </div>
+                    <!-- end banner-cell -->
+                </div>
+                <!-- end banner-text -->
+            </div>
+            <!-- end banner-static -->
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- end container -->
+</div>
     <!-- end banner -->
 
-    <!-- {% include 'Website/about.html' %} -->
     <!-- end about -->
 
-    <!-- {% include 'Website/special-menu.html' %} -->
     <!-- end special-menu -->
 
-    <!-- {% include 'Website/menu.html' %} -->
     <!-- end menu -->
 
-    <!-- {% include 'Website/our_team.html' %} -->
     <!-- end team-main -->
 
-    <!-- {% include 'Website/gallery.html' %} -->
     <!-- end gallery-main -->
 
-    <!-- {% include 'Website/blog.html' %} -->
     <!-- end blog-main -->
 
-    <!-- {% include 'Website/pricing.html' %} -->
     <!-- end pricing-main -->
 
-    {% include 'Website/reservation.html' %}
-    <!-- end reservations-main -->
-
+    <div id="reservation" class="reservations-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="form-reservations-box">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="block-title text-center">Upload a Photo</h2>
+                        </div>
+                        <h4 class="form-title">Upload FORM</h4>
+                        <p>PLEASE FILL OUT ALL REQUIRED FIELDS. THANKS </p>
+    
+                        <form id="upload-form" method="post" enctype="multipart/form-data" action="{% url 'website:index' %}">
+                            {% csrf_token %}
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="text" name="name" id="form_name" placeholder="Your Name" required="required" data-error="Firstname is required.">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="email" name="email" id="email" placeholder="E-Mail ID" required="required" data-error="E-mail id is required.">
+                                </div>
+                            </div>
+                            <!-- end col -->
+    
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <input type="file" name="image" id="image" required="required" data-error="Image is required.">
+                                </div>
+                            </div>
+                            <!-- end col -->
+    
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-box">
+                                    <select name="category" id="food_category" class="selectpicker" placeholder="Your Name">
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- end col -->
+    
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-box">
+                                    {{ food_image_form.captcha }}
+                                </div>
+                            </div>
+                            <!-- end col -->
+    
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="reserve-book-btn text-center">
+                                    <button class="hvr-underline-from-center" type="submit" id="submit">Upload</button>
+                                </div>
+                            </div>
+                            <!-- end col -->
+    
+                        </form>
+                        <!-- end form -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end reservations-box -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
 {% endblock content %}
 
