@@ -4,7 +4,6 @@ from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV2Invisible
 
 class UploaderForm(forms.ModelForm):
-    # captcha = ReCaptchaField()
 
     class Meta:
         model = Uploader
