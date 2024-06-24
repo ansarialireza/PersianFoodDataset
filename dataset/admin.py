@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Uploader, Category, FoodImage
+from .models import Uploader, Category, FoodImage, Question
 
 class UploaderAdmin(admin.ModelAdmin):
     list_display = ('name', 'email')
@@ -14,6 +14,11 @@ class FoodImageAdmin(admin.ModelAdmin):
     search_fields = ('uploader__name', 'category__name')
     list_filter = ('category', 'upload_date')
 
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text')
+    search_fields = ('text',)
+
 admin.site.register(Uploader, UploaderAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(FoodImage, FoodImageAdmin)
+admin.site.register(Question, QuestionAdmin)

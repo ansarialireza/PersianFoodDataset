@@ -13,4 +13,4 @@ class FoodImageForm(forms.ModelForm):
     captcha = ReCaptchaField()
     class Meta:
         model = FoodImage
-        fields = ['image', 'category']
+        fields = ['image', 'category','rating']

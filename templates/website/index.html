@@ -56,7 +56,47 @@
                         </div>
                         <h4 class="form-title">Upload FORM</h4>
                         <p>PLEASE FILL OUT ALL REQUIRED FIELDS. THANKS </p>
-    
+                        <style>
+                            .star-rating-container {
+                                text-align: center;
+                                margin-bottom: 20px;
+                            }
+                        
+                            .star-rating {
+                                display: flex;
+                                flex-direction: row-reverse;
+                                justify-content: center;
+                            }
+                        
+                            .star-rating input[type="radio"] {
+                                display: none;
+                            }
+                        
+                            .star-rating label {
+                                font-size: 3em; /* افزایش سایز فونت ستاره‌ها */
+                                color: #d3d3d3;
+                                cursor: pointer;
+                                transition: color 0.2s;
+                            }
+                        
+                            .star-rating input[type="radio"]:checked ~ label {
+                                color: #ffc700;
+                            }
+                        
+                            .star-rating label:hover,
+                            .star-rating label:hover ~ label {
+                                color: #ffc700;
+                            }
+
+                        </style>
+                        <style>
+                            .form-box {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        </style>
+                        
                         <form id="upload-form" method="post" enctype="multipart/form-data" action="{% url 'website:index' %}">
                             {% csrf_token %}
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -70,14 +110,14 @@
                                 </div>
                             </div>
                             <!-- end col -->
-    
+                        
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
                                     <input type="file" name="image" id="image" required="required" data-error="Image is required.">
                                 </div>
                             </div>
                             <!-- end col -->
-    
+                        
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-box">
                                     <select name="category" id="food_category" class="selectpicker" placeholder="Your Name">
@@ -88,22 +128,46 @@
                                 </div>
                             </div>
                             <!-- end col -->
-    
+                        
+                            <!-- Star rating section -->
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <label for="rating">{{ question.text }}:</label>
+                            </div>
+                            
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-box">
+                                <div class="form-box star-rating-container">
+                                    <div class="star-rating">
+                                        <input type="radio" id="star5" name="rating" value="5">
+                                        <label for="star5" title="5 stars">&#9733;</label>
+                                        <input type="radio" id="star4" name="rating" value="4">
+                                        <label for="star4" title="4 stars">&#9733;</label>
+                                        <input type="radio" id="star3" name="rating" value="3">
+                                        <label for="star3" title="3 stars">&#9733;</label>
+                                        <input type="radio" id="star2" name="rating" value="2">
+                                        <label for="star2" title="2 stars">&#9733;</label>
+                                        <input type="radio" id="star1" name="rating" value="1">
+                                        <label for="star1" title="1 star">&#9733;</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-box text-center">
                                     {{ food_image_form.captcha }}
                                 </div>
                             </div>
                             <!-- end col -->
-    
+                        
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="reserve-book-btn text-center">
                                     <button class="hvr-underline-from-center" type="submit" id="submit">Upload</button>
                                 </div>
                             </div>
+
                             <!-- end col -->
-    
                         </form>
+                                             
                         <!-- end form -->
                     </div>
                     <!-- end col -->

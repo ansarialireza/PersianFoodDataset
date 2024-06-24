@@ -5,7 +5,7 @@ from django.contrib import messages
 from dataset.forms import UploaderForm, FoodImageForm
 from dataset.models import Category
 from django.conf import settings
-
+from dataset.models import *
 class UploadImageView(FormView):
     template_name = 'website/index.html'
     form_class = UploaderForm
@@ -16,6 +16,8 @@ class UploadImageView(FormView):
         context = super(UploadImageView, self).get_context_data(**kwargs)
         context['uploader_form'] = self.form_class()
         context['food_image_form'] = self.second_form_class()
+        question = Question.objects.first()
+        context['question'] = question
         context['categories'] = Category.objects.all()
         context['site_key'] = settings.RECAPTCHA_PUBLIC_KEY
         return context

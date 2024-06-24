@@ -3,6 +3,7 @@ from django.views.generic import FormView, TemplateView
 from .forms import UploaderForm, FoodImageForm
 from django.shortcuts import redirect
 from django.contrib import messages
+from .models import Question
 
 class UploadImageView(FormView):
     template_name = 'website/index.html'
@@ -11,10 +12,12 @@ class UploadImageView(FormView):
     success_url = reverse_lazy('website:index')
 
     def get_context_data(self, **kwargs):
-        context = super(UploadImageView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        question = Question.objects.all()
         context['uploader_form'] = self.form_class()
         context['food_image_form'] = self.second_form_class()
         return context
+
 
     def post(self, request, *args, **kwargs):
         self.object = None
@@ -51,5 +54,4 @@ class SuccessView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        messages.success(self.request, 'Form submitted successfully!')
         return context
