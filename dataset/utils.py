@@ -14,7 +14,7 @@ def generate_filename(instance, filename):
     unique_id = get_latest_id() + 1
     
     new_filename = f"{category_id}_{rating}_{unique_id}.jpg"  
-    return os.path.join(settings.MEDIA_ROOT, 'food_images', category_name, new_filename)
+    return os.path.join(settings.MEDIA_ROOT, 'food_images', str(category_id), new_filename)
 
 def food_image_path(instance, filename):
     return generate_filename(instance, filename)
