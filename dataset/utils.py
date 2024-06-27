@@ -9,10 +9,11 @@ def get_latest_id():
 
 def generate_filename(instance, filename):
     category_name = instance.category.name
+    category_id = instance.category.id  # اضافه کردن آیدی کتگوری
     rating = instance.rating
     unique_id = get_latest_id() + 1
     
-    new_filename = f"{rating}_{unique_id}.jpg"
+    new_filename = f"{category_id}_{rating}_{unique_id}.jpg"  # اسم فایل با آیدی کتگوری
     return os.path.join(settings.MEDIA_ROOT, 'food_images', category_name, new_filename)
 
 def food_image_path(instance, filename):

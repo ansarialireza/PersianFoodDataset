@@ -6,7 +6,7 @@ class UploaderAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email')
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','id')
     search_fields = ('name',)
 
 class FoodImageAdmin(admin.ModelAdmin):
