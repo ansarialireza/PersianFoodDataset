@@ -18,7 +18,7 @@ def generate_filename(instance, filename):
     safe_filename = get_valid_filename(clean_filename)
     
     # Constructing the relative path
-    final_path = os.path.join('food_images', safe_filename)
+    final_path = os.path.join('food_images',str(category_id), safe_filename)
     
     return final_path
 
